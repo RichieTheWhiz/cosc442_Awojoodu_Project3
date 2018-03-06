@@ -60,8 +60,20 @@ public class VendingMachineTest {
 	   //Soda taking the position of D and being checked right after
 		richies.addItem(soda, "D");
 		assertEquals(soda, richies.getItem("D"));
+	}	
+	
+	/**
+	 * Test method for VendingMachine AddItem exception case
+	 */
+	@Test(expected = VendingMachineException.class)
+	public void testAddItemNeg(){
+			testAddItem();
+		   //Candy taking the position of E and being checked right after
+			richies.addItem(soda, "D");
 	}
 
+
+	
 	/**
 	 * Test method for VendingMachine returnChange
 	 */
@@ -92,16 +104,33 @@ public class VendingMachineTest {
 		richies.removeItem("D");
 		assertNull(richies.getItem("D"));
 	}
+	
+	/**
+	 * Test method for VendingMachine remove item case
+	 */
+	@Test(expected = VendingMachineException.class)
+	public void testRemoveItemNeg(){
+		richies.removeItem("D");
+		assertNull(richies.getItem("D"));
+	}
 
+	/**
+	 * Test method for VendingMachine get slot index
+	 */
+	@Test(expected = VendingMachineException.class)
+	public void testGetSlotIndex(){
+		//Test the untouched cases of slot index return
+		 richies.getItem("E");
+	}
 	/**
 	 * Test method for VendingMachine insertMoney
 	 */
-	@Test
+	@Test(expected = VendingMachineException.class)
 	public void testInsertMoney() {
 		//This is the test for the case of a negative amount input 
-//		richies.insertMoney(-1);
-//		assertEquals("Invalid amount.  Amount must be >= 0" , );
-//		richies.returnChange();
+		richies.insertMoney(-1);
+		assertNull(richies.balance);
+		
 		
 		//This is the test for 0 amount inputs
 		richies.insertMoney(0);

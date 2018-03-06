@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItem;
@@ -22,6 +23,10 @@ public class VendingMachineItemTest {
 	public VendingMachineItem gum;
 	public VendingMachineItem soda;
 	public VendingMachineItem candy;
+	public VendingMachineItem caps;
+	
+	public VendingMachineException thrown = new VendingMachineException();
+
 	/**
 	 * Instantiation of the machine items
 	 */
@@ -37,8 +42,9 @@ public class VendingMachineItemTest {
 	/**
 	 * Test method forVendingMachineItem class VendingMachineItem constructor
 	 */
-	@Test
+	@Test(expected = VendingMachineException.class)
 	public void testVendingMachineItem() {
+		caps = new VendingMachineItem("Caps",-1.0);
 		//This is one test to see if the instantiated object will be able  
 		//to have all of the elements that make it up 
 		assertEquals("Soda",soda.getName());
