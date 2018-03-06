@@ -1,92 +1,128 @@
-/**
- * 
- */
 package edu.towson.cis.cosc442.project3.vendingmachine;
 
+import org.junit.*;
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-
-import edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineItem;
-
 /**
- * @author richieAwojoodu
+ * The class <code>VendingMachineItemTest</code> contains tests for the class <code>{@link VendingMachineItem}</code>.
  *
+ * @generatedBy CodePro at 3/6/18 4:33 PM
+ * @author richieawojoodu
+ * @version $Revision: 1.0 $
  */
 public class VendingMachineItemTest {
+	/**
+	 * Run the VendingMachineItem(String,double) constructor test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/6/18 4:33 PM
+	 */
+	@Test
+	public void testVendingMachineItem_1()
+		throws Exception {
+		String name = "";
+		double price = 1.0;
 
-	public VendingMachineItem chips;
-	public VendingMachineItem popcorn;
-	public VendingMachineItem gum;
-	public VendingMachineItem soda;
-	public VendingMachineItem candy;
-	public VendingMachineItem caps;
-	
-	public VendingMachineException thrown = new VendingMachineException();
+		VendingMachineItem result = new VendingMachineItem(name, price);
+
+		// add additional test code here
+		assertNotNull(result);
+		assertEquals("", result.getName());
+		assertEquals(1.0, result.getPrice(), 1.0);
+	}
 
 	/**
-	 * Instantiation of the machine items
+	 * Run the VendingMachineItem(String,double) constructor test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/6/18 4:33 PM
+	 */
+	@Test(expected = edu.towson.cis.cosc442.project3.vendingmachine.VendingMachineException.class)
+	public void testVendingMachineItem_2()
+		throws Exception {
+		String name = "";
+		double price = -4.9E-324;
+
+		VendingMachineItem result = new VendingMachineItem(name, price);
+
+		// add additional test code here
+		assertNotNull(result);
+	}
+
+	/**
+	 * Run the String getName() method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/6/18 4:33 PM
+	 */
+	@Test
+	public void testGetName_1()
+		throws Exception {
+		VendingMachineItem fixture = new VendingMachineItem("", 1.0);
+
+		String result = fixture.getName();
+
+		// add additional test code here
+		assertEquals("", result);
+	}
+
+	/**
+	 * Run the double getPrice() method test.
+	 *
+	 * @throws Exception
+	 *
+	 * @generatedBy CodePro at 3/6/18 4:33 PM
+	 */
+	@Test
+	public void testGetPrice_1()
+		throws Exception {
+		VendingMachineItem fixture = new VendingMachineItem("", 1.0);
+
+		double result = fixture.getPrice();
+
+		// add additional test code here
+		assertEquals(1.0, result, 0.1);
+	}
+
+	/**
+	 * Perform pre-test initialization.
+	 *
+	 * @throws Exception
+	 *         if the initialization fails for some reason
+	 *
+	 * @generatedBy CodePro at 3/6/18 4:33 PM
 	 */
 	@Before
-	public void setUp() throws Exception {
-		chips = new VendingMachineItem("Tortilla Chips",1.00);
-		popcorn = new VendingMachineItem("Popcorn",3.00);
-		gum = new VendingMachineItem("Gum",0.75);
-		soda = new VendingMachineItem("Soda",1.50);
-		candy  = new VendingMachineItem("Candy",2.00);
+	public void setUp()
+		throws Exception {
+		// add additional set up code here
 	}
 
 	/**
-	 * Test method forVendingMachineItem class VendingMachineItem constructor
-	 */
-	@Test(expected = VendingMachineException.class)
-	public void testVendingMachineItem() {
-		caps = new VendingMachineItem("Caps",-1.0);
-		//This is one test to see if the instantiated object will be able  
-		//to have all of the elements that make it up 
-		assertEquals("Soda",soda.getName());
-		assertEquals(1.50 ,soda.getPrice(), .0001);
-	}
-
-	/**
-	 * Test method for VendingMachineItem getName()
-	 */
-	@Test
-	public void testGetName() {
-		//This should test return the name of the item 
-		assertEquals("Tortilla Chips",chips.getName());
-		assertEquals("Popcorn",popcorn.getName());
-		assertEquals("Gum",gum.getName());
-		assertEquals("Soda",soda.getName());
-		assertEquals("Candy",candy.getName());
-	}
-
-	/**
-	 * Test method for VendingMachineItem getPrice()
-	 */
-	@Test
-	public void testGetPrice() {
-		//This should test return the price of the item 
-		assertEquals(1.00, chips.getPrice(), .0001);
-		assertEquals(3.00 , popcorn.getPrice() , .0001);
-		assertEquals(0.75 , gum.getPrice() , .0001);
-		assertEquals(1.50 , soda.getPrice() , .0001);
-		assertEquals(2.00 , candy.getPrice() , .0001);
-	}
-	
-	/**
-	 * Tear Down function 
+	 * Perform post-test clean-up.
+	 *
+	 * @throws Exception
+	 *         if the clean-up fails for some reason
+	 *
+	 * @generatedBy CodePro at 3/6/18 4:33 PM
 	 */
 	@After
-	public void tearDown() throws Exception {
-		chips = null;
-		popcorn = null;
-		gum = null;
-		soda = null;
-		candy = null;
+	public void tearDown()
+		throws Exception {
+		// Add additional tear down code here
 	}
 
+	/**
+	 * Launch the test.
+	 *
+	 * @param args the command line arguments
+	 *
+	 * @generatedBy CodePro at 3/6/18 4:33 PM
+	 */
+	public static void main(String[] args) {
+		new org.junit.runner.JUnitCore().run(VendingMachineItemTest.class);
+	}
 }
