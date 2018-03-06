@@ -378,7 +378,106 @@ public class VendingMachineTest {
 		throws Exception {
 		// add additional set up code here
 	}
+	public VendingMachineItem chips;
+	 public VendingMachineItem popcorn;
+	 	public VendingMachineItem gum;
+	 	public VendingMachineItem soda;
+	 	public VendingMachineItem candy;
+	 	public VendingMachineItem caps;
+	 	
+	 @Before
+	 public void setUp2() throws Exception {
+	  chips = new VendingMachineItem("Tortilla Chips",1.00);
+	 		popcorn = new VendingMachineItem("Popcorn",3.00);
+	 		gum = new VendingMachineItem("Gum",0.75);
+	 	soda = new VendingMachineItem("Soda",1.50);
+	 		candy  = new VendingMachineItem("Candy",2.00);
+	}
+	
+	@Test //(expected = VendingMachineException.class)
+	 public void testGetSlotIndex(){
+		VendingMachine richies = new VendingMachine();
+	
+//Chips taking the position of A and being checked right after
+	richies.addItem(chips, "A");
+	assertEquals(chips, richies.getItem("A"));
+	
+   //Popcorn taking the position of B and being checked right after
+	richies.addItem(popcorn, "B");
+	assertEquals(popcorn, richies.getItem("B"));
+	
+//Gum taking the position of C and being checked right after
+	richies.addItem(gum, "C");
+	assertEquals(gum, richies.getItem("C"));
+ 
+  //Soda taking the position of D and being checked right after
+ richies.addItem(soda, "D");
+assertEquals(soda, richies.getItem("D"));
 
+//Test the untouched cases of slot index return
+	 	 richies.getItem("B");
+	 	richies.getItem("C");
+	 	richies.getItem("D");
+	}
+	
+	/**
+	 	 * Test method for VendingMachine AddItem exception case
+	 	 */
+	 	@Test(expected = VendingMachineException.class)
+	 	public void testAddItemNeg(){
+	 		VendingMachine richies = new VendingMachine();
+	 		//Chips taking the position of A and being checked right after
+	 		richies.addItem(chips, "A");
+	 		assertEquals(chips, richies.getItem("A"));
+	 		
+	 	   //Popcorn taking the position of B and being checked right after
+	 		richies.addItem(popcorn, "B");
+	 		assertEquals(popcorn, richies.getItem("B"));
+	 		
+	 	//Gum taking the position of C and being checked right after
+	 		richies.addItem(gum, "C");
+	 		assertEquals(gum, richies.getItem("C"));
+	 	 
+	 	  //Soda taking the position of D and being checked right after
+	 	 richies.addItem(soda, "D");
+	 	assertEquals(soda, richies.getItem("D"));
+	 		   //Candy taking the position of E and being checked right after
+	 			richies.addItem(soda, "D");
+	 	}
+	 	
+	 	@Test
+	 	 public void testMakePurchase() {
+	 		VendingMachine richies = new VendingMachine();
+	 		//Chips taking the position of A and being checked right after
+	 		richies.addItem(chips, "A");
+	 		assertEquals(chips, richies.getItem("A"));
+	 		
+	 	   //Popcorn taking the position of B and being checked right after
+	 		richies.addItem(popcorn, "B");
+	 		assertEquals(popcorn, richies.getItem("B"));
+	 		
+	 	//Gum taking the position of C and being checked right after
+	 		richies.addItem(gum, "C");
+	 		assertEquals(gum, richies.getItem("C"));
+	 	 
+	 	  //Soda taking the position of D and being checked right after
+	 	 richies.addItem(soda, "D");
+	 	assertEquals(soda, richies.getItem("D"));
+	 	
+	 		   //Candy taking the position of E and being checked right after
+
+	 	 		richies.insertMoney(15);
+	 	 //		assertEquals(soda, richies.getItem("D"));
+	 	 		assertEquals(true, richies.makePurchase("A"));
+	 	 		assertEquals(true, richies.makePurchase("B"));
+	 	 		assertEquals(true, richies.makePurchase("C"));
+	 	 		richies.removeItem("D");
+	 	 		assertEquals(false, richies.makePurchase("D"));
+	 	 		richies.addItem(soda, "D");
+	 	 		richies.returnChange();
+	 	 		assertEquals(false, richies.makePurchase("D"));
+	 
+	 	}	 
 	/**
 	 * Perform post-test clean-up.
 	 *
@@ -387,12 +486,14 @@ public class VendingMachineTest {
 	 *
 	 * @generatedBy CodePro at 3/6/18 4:33 PM
 	 */
+	
 	@After
 	public void tearDown()
 		throws Exception {
 		// Add additional tear down code here
 	}
 
+	
 	/**
 	 * Launch the test.
 	 *
